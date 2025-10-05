@@ -23,6 +23,12 @@ def print_adj_list(adj_list):
     for neighbor, weight in adj_list[vertex]:
       print(f"{neighbor}[ {weight} ], ", end="")
     print()
+    
+def count_edges(adj_list):
+  total_count = 0
+  for vertex in adj_list:
+    total_count += len(adj_list[vertex])
+  return total_count
 
 def general_graph_generator(node_size, prob=0.5, max_weight=10):
   adj_list = {i:[] for i in range(node_size)}
@@ -64,7 +70,10 @@ def connected_undirected_graph_generator(node_size, max_weight=10):
   return undirected_graph_generator(node_size, 1.0, max_weight)
 
 if __name__ == "__main__":
-  print_adj_list(connected_undirected_graph_generator(100))
+  #print_adj_list(connected_undirected_graph_generator(100))
+  adj_list = general_graph_generator(100)
+  print_adj_list(adj_list)
+  print(count_edges(adj_list))
   
   
   
